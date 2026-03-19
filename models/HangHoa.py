@@ -9,7 +9,7 @@ class HangHoa:
         self.__price = price
         self.__cost = cost
         self.__TenHH = TenHH
-
+        self.__isActive = True
         self.__img_path = img_path
         try:
             self.image_obj = Image.open(img_path)
@@ -17,7 +17,8 @@ class HangHoa:
             self.image_obj = None  # Phòng trường hợp file ảnh bị lỗi/thiếu
 
     """ Getter """
-
+    def getActive(self):
+        return self.__isActive
     def getMaHH(self):
         return self.__MaHH
 

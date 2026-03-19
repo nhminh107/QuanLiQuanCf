@@ -11,9 +11,12 @@ class NhanVien:
         self.__luong = salary
         self.__sdt = sdt
         self.__chamcong = chamcong
+        self.__isActive = True
 
     """Getter/Setter"""
 
+    def getActive(self):
+        return self.__isActive
     def getMaNV(self):
         return self.__MaNV
 
@@ -31,7 +34,8 @@ class NhanVien:
 
     def setPassword(self, old_input, newPass: str):
 
-        if self.__password != old_input:
+        hash_old_pass = hashlib.sha256(old_input.encode()).hexdigest()
+        if self.__password.strip() != hash_old_pass:
             return -1
             # Sai mật khẩu cũ
 
