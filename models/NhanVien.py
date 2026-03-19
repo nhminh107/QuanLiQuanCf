@@ -56,41 +56,6 @@ class NhanVien:
             return 1
         return 0
 
-    def setLuong(self, salary):
-        if salary <= 20000:
-            return -1
-            # Lương không được nhỏ hơn 20000
-
-        query = ' UPDATE NhanVien SET Luong = ? WHERE RTRIM(MaNV) = ? '
-        success = self.DBM.execute_non_query(query, (salary, self.__MaNV))
-
-        if success:
-            return 1
-
-        return 0
-
-    def deleteAccount(self):
-        """Xóa chính tài khoản này. Sau này UI nhớ thêm sự kiện đăng xuất"""
-        query = 'DELETE FROM NhanVien WHERE RTRIM(MANV) = ?'
-        success = self.DBM.execute_non_query(query, (self.__MaNV))
-
-        if success:
-            return 1
-
-        return 0
-
-    def deleteAnotherAccount(self, MaNhanVien):
-        """Xóa tài khoản khác, chỉ role Quản Lí mới được xóa"""
-
-        if self.__role != "Quản lí":
-            return -1
-            # IN ra: Bạn phải là quản lí mới được xóa
-        query = 'DELETE FROM NhanVien WHERE RTRIM(MANV) = ?'
-        success = self.DBM.execute_non_query(query, (MaNhanVien))
-
-        if success:
-            return 1
-        return 0
 
 
 
