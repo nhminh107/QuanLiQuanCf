@@ -28,6 +28,11 @@ class DatabaseManager:
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
 
+    def fetch_one(self, query, params=()):
+        """Dùng cho lệnh SELECT khi muốn lấy nhiều dòng"""
+        self.cursor.execute(query, params)
+        return self.cursor.fetchone()
+
     def execute_non_query(self, query, params=()):
         """Dùng cho INSERT, UPDATE, DELETE"""
         try:
